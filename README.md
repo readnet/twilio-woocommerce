@@ -1,7 +1,7 @@
 # Readnet Twilio (rTwilio)
 ###### A Wordpress plugin to send SMS messages
 
-[![Version](https://img.shields.io/badge/version-1.0.0-green)]()
+[![Version](https://img.shields.io/badge/version-1.1.0-green)]()
 [![Licence](https://img.shields.io/badge/licence-gplv2-blue)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
 ![Size](https://img.shields.io/github/repo-size/readnet/twilio-woocommerce)
 
