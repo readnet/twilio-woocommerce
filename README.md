@@ -16,17 +16,17 @@ This section describes how to install the plugin and get it working.
 2. Upload the zip archive to the Wordpress installation via the plugins page
 
 ## Frequently Asked Questions (FAQs)
-**Q:** Is this plugin free?
-**A:** Yes, it is and also open source.
-##
-**Q:** So that means I can copy it?
-**A:** Yes you can. Although attribution to the author does not hurt. So leave commented sections as is.
-##
-**Q:** What language is this?
-**A:** It's Greek.
-##
-**Q:** Can I change the language?
-**A:** Of course, but you must do it via editing all the files that contain text. No auto way yet, sorry.
+- **Q: Is this plugin free?**
+  - A: Yes, it is and also open source.
+
+- **Q: So that means I can copy it?**
+  - A: Yes you can. Although attribution to the author does not hurt. So leave commented sections as is.
+
+- **Q: What language is this?**
+  - A: It's Greek.
+
+- **Q: Can I change the language?**
+  - A: Of course, but you must do it via editing all the files that contain text. No auto way yet, sorry.
 
 ## Changelog
 Tested up to Wordpress version 5.4.1
