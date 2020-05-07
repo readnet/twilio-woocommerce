@@ -1,8 +1,7 @@
 # Readnet Twilio (rTwilio)
 ###### A Wordpress plugin to send SMS messages
 
-[![version](https://img.shields.io/badge/version-1.0.0-lightgrey)]
-[![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)]
+[(https://img.shields.io/badge/version-1.0.0-lightgrey)]
 
 ## Description
 The plugin integrates with the Twilio API and Woocommerce in order to provide the best user experience possible. A checkbox appears at the Woocommerce checkout page which gives the customer the ability to choose if they want to be informed about the process of their order via SMS.
