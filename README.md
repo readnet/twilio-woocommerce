@@ -1,6 +1,10 @@
 # Readnet Twilio (rTwilio)
 ###### A Wordpress plugin to send SMS messages
 
+[![Version](https://img.shields.io/badge/latest_stable_version-1.1.0-green)]()
+[![Licence](https://img.shields.io/badge/licence-gplv2-blue)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+![Size](https://img.shields.io/github/repo-size/readnet/twilio-woocommerce)
+
 ## Description
 The plugin integrates with the Twilio API and Woocommerce in order to provide the best user experience possible. A checkbox appears at the Woocommerce checkout page which gives the customer the ability to choose if they want to be informed about the process of their order via SMS.
 Extra options also appear in the 'Edit Order' page which give the shop owners the ability to send customized SMS messages directly to the customer.
@@ -16,14 +20,17 @@ This section describes how to install the plugin and get it working.
 2. Upload the zip archive to the Wordpress installation via the plugins page
 
 ## Frequently Asked Questions (FAQs)
-**Q: Is this plugin free?**
-A: Yes, it is and also open source.
-**Q: So that means I can copy it?**
-Yes you can. Although attribution to the author does not hurt. So leave commented sections as is.
-**Q: What language is this?**
-A: It's Greek.
-**Q: Can I change the language?**
-A: Of course, but you must do it via editing all the files that contain text. No auto way yet, sorry.
+- **Is this plugin free?**
+  - Yes, it is and also open source.
+
+- **So that means I can copy it?**
+  - Yes you can. Although attribution to the author does not hurt. So leave commented sections as is.
+
+- **What language is this?**
+  - It's Greek.
+
+- **Can I change the language?**
+  - Of course, but you must do it via editing all the files that contain text. No auto way yet, sorry.
 
 ## Changelog
 Tested up to Wordpress version 5.4.1
