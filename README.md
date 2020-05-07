@@ -3,7 +3,7 @@
 
 [![Version](https://img.shields.io/badge/version-1.0.0-green)]()
 [![Licence](https://img.shields.io/badge/licence-gplv2-blue)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
-(https://img.shields.io/github/repo-size/readnet/twilio-woocommerce)
+!(https://img.shields.io/github/repo-size/readnet/twilio-woocommerce)
 
 ## Description
 The plugin integrates with the Twilio API and Woocommerce in order to provide the best user experience possible. A checkbox appears at the Woocommerce checkout page which gives the customer the ability to choose if they want to be informed about the process of their order via SMS.
