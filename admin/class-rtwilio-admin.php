@@ -173,9 +173,17 @@ public function add_rtwilio_admin_setting() {
 	public function rtwilio_admin_settings_save(){
 
 	    register_setting( $this->plugin_name, $this->plugin_name, array($this, 'plugin_options_validate') );
-	    add_settings_section('rtwilio_main', 'Twilio SMS Integration settings', array($this, 'rtwilio_section_text'), 'rtwilio-settings-page');
-	    add_settings_field('api_sid', 'Twilio SID API', array($this, 'rtwilio_setting_sid'), 'rtwilio-settings-page', 'rtwilio_main');
-	    add_settings_field('api_auth_token', 'Auth Token', array($this, 'rtwilio_setting_token'), 'rtwilio-settings-page', 'rtwilio_main');
+	    add_settings_section('rtwilio_main', 'Ρυθμίσεις ενσωμάτωσης Twilio SMS', array($this, 'rtwilio_section_text'), 'rtwilio-settings-page');
+	    add_settings_field('api_sid', 'API SID', array($this, 'rtwilio_setting_sid'), 'rtwilio-settings-page', 'rtwilio_main');
+		add_settings_field('api_auth_token', 'Auth Token', array($this, 'rtwilio_setting_token'), 'rtwilio-settings-page', 'rtwilio_main');
+		add_settings_field('sender_phone', 'Αριθμός αποστολέα', array($this, 'rtwilio_setting_phone'), 'rtwilio-settings-page', 'rtwilio_main');
+		add_settings_field('download_link', 'Σύνδεσμος λήψης', array($this, 'rtwilio_setting_download_link'), 'rtwilio-settings-page', 'rtwilio_main');
+
+		add_settings_section('rtwilio_messages', 'Μηνύματα αποστολής', array($this, 'rtwilio_section_messages'), 'rtwilio-settings-page');
+		add_settings_field('order_completed_message', 'Ολοκληρωμένη:', array($this, 'rtwilio_setting_order_completed_message'), 'rtwilio-settings-page', 'rtwilio_messages');
+
+		add_settings_section('rtwilio_information', 'Πληροφορίες', array($this, 'rtwilio_section_information'), 'rtwilio-settings-page');
+		
 	}
 
 	/**
@@ -183,7 +191,33 @@ public function add_rtwilio_admin_setting() {
 	 *
 	 */
 	public function rtwilio_section_text() {
-	    echo '<h3>Edit Twilio API details</h3>';
+		echo '<p class="rt-desk">Γενικές ρυθμίσεις σχετικά με το API.</p>';
+	}
+
+	/**
+	 * Displays the messages sub header
+	 *
+	 */
+	public function rtwilio_section_messages() {
+	    echo '<p class="rt-desk">Ορίστε τα μηνύματα που θα αποστέλλονται κατά την ολοκλήρωση της παραγγελίας από τον πελάτη.</p>';
+	}
+
+	/**
+	 * Displays the information sub header
+	 *
+	 */
+	public function rtwilio_section_information() {
+		echo '<p class="rt-desk">Μπορείτε να ορίσετε shortcodes στα μηνύματα αποστολής για τη σωστή σύνταξη τους:</p>';
+		$shorts = <<<SCT
+			<ul>
+				<li><code>[order_id]</code> = Αριθμός παραγγελίας του πελάτη</li>
+				<li><code>[customer_firstname]</code> = Το όνομα του πελάτη</li>
+				<li><code>[customer_lastname]</code> = Το επώνυμο του πελάτη</li>
+				<li><code>[order_date]</code> = Ημερομηνία καταχώρησης παραγγελίας</li>
+				<li><code>[download_link]</code> = Ο σύνδεσμος για τη λήψη των βιβλίων</li>
+			</ul>
+		SCT;
+		echo $shorts;
 	}
 
 	/**
@@ -192,7 +226,7 @@ public function add_rtwilio_admin_setting() {
 	 */
 	public function rtwilio_setting_sid() {
 	   $options = get_option($this->plugin_name);
-	   echo "<input id='plugin_text_string' name='$this->plugin_name[api_sid]' size='40' type='text' value='{$options['api_sid']}' />";
+	   echo "<input id='plugin_text_string' autocomplete='off' spellcheck='false' name='$this->plugin_name[api_sid]' size='40' type='text' value='{$options['api_sid']}' />";
 	}
 
 	/**
@@ -201,8 +235,38 @@ public function add_rtwilio_admin_setting() {
 	 */
 	public function rtwilio_setting_token() {
 	   $options = get_option($this->plugin_name);
-	   echo "<input id='plugin_text_string' name='$this->plugin_name[api_auth_token]' size='40' type='text' value='{$options['api_auth_token']}' />";
+	   echo "<input id='plugin_text_string' type='password' autocomplete='off' spellcheck='false' name='$this->plugin_name[api_auth_token]' size='40' type='text' value='{$options['api_auth_token']}' />";
 	}
+
+	/**
+	 * Renders the sender_phone input field
+	 *
+	 */
+	public function rtwilio_setting_phone() {
+		$options = get_option($this->plugin_name);
+		echo "<input id='plugin_text_string' name='$this->plugin_name[sender_phone]' size='40' type='text' value='{$options['sender_phone']}' />";
+		echo "<p class='description'>Ο αριθμός τηλεφώνου από τον οποίο θα γίνονται οι αποστολές των SMS.</p>";
+	 }
+
+	 /**
+	 * Renders the order_completed_message input field
+	 *
+	 */
+	public function rtwilio_setting_order_completed_message() {
+		$options = get_option($this->plugin_name);
+		echo "<textarea class='rt-message-textarea' id='plugin_text_string' name='$this->plugin_name[order_completed_message]' rows='3' cols='20' type='textarea'>{$options['order_completed_message']}</textarea>";
+		echo "<p class='description'>Το μήνυμα που θα αποστέλλεται για τις ολοκληρωμένες παραγγελίες.</p>";
+	 }
+
+	 /**
+	 * Renders the download_link input field
+	 *
+	 */
+	public function rtwilio_setting_download_link() {
+		$options = get_option($this->plugin_name);
+		echo "<input id='plugin_text_string' name='$this->plugin_name[download_link]' size='60' type='text' value='{$options['download_link']}' />";
+		echo "<p class='description'>Ο σύνδεσμος που παραπέμπει στη σελίδα των λήψεων για τις παραγγελίες.</p>";
+	 }
 
 	/**
 	 * Sanitises all input fields.
@@ -210,8 +274,10 @@ public function add_rtwilio_admin_setting() {
 	 */
 	public function plugin_options_validate($input) {
 	    $newinput['api_sid'] = trim($input['api_sid']);
-	    $newinput['api_auth_token'] = trim($input['api_auth_token']);
-
+		$newinput['api_auth_token'] = trim($input['api_auth_token']);
+		$newinput['sender_phone'] = trim($input['sender_phone']);
+		$newinput['order_completed_message'] = trim($input['order_completed_message']);
+		$newinput['download_link'] = trim($input['download_link']);
 	    return $newinput;
 	}
 

@@ -13,10 +13,10 @@
  * @package           Rtwilio
  *
  * @wordpress-plugin
- * Plugin Name:       Readnet Twilio Integration
+ * Plugin Name:       Readnet Twilio
  * Plugin URI:        https://www.readnet.gr/
- * Description:       Send SMS messages to customers using the Twilio API.
- * Version:           1.0.0
+ * Description:       Αποστολή μηνυμάτων SMS στους πελάτες με τη χρήση του Twilio API.
+ * Version:           1.1.0
  * Author:            Giannis Ftaras (@readnet-publications)
  * Author URI:        https://giannisftaras.dev/
  * License:           GPL-2.0+
@@ -35,7 +35,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'RTWILIO_VERSION', '1.0.0' );
+define( 'RTWILIO_VERSION', '1.1.0' );
 
 /**
  * The code that runs during plugin activation.

@@ -12,3 +12,13 @@
     margin-top: 5px;
     float: none;
   }
+
+  .rt-desk {
+    font-style: italic;
+    color: #777;
+  }
+
+  .rt-message-textarea {
+    max-width: 600px;
+    width: 100%;
+  }

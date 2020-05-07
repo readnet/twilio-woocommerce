@@ -141,30 +141,35 @@ class Rtwilio_Public {
 			}
 	
 			if ($phone_checked && $order->get_meta($key = 'send_sms') == 1) {
-				$this->send_twil_sms($order->get_status(), $order->get_id(), $phone);
+				$this->send_twil_sms($order, $phone);
 			} elseif (! $phone_checked && $order->get_meta($key = 'send_sms') == 1) {
 				echo '<h2 class="h2thanks">Χωρίς SMS :(</h2><p class="pthanks">Δυστυχώς το τηλέφωνο που καταχωρήσατε δεν είναι συμβατό για την αποστολή SMS της παραγγελίας σας!</p>';
 			}
 	
 		}
 	
-		function send_twil_sms($status, $order_id, $phone) {
+		function send_twil_sms($order, $phone) {
 			$api_details = get_option('rTwilio');
 	
-			if ($status == 'completed') {
+			if ($order->get_status() == 'completed') {
 				$sid = $api_details['api_sid'];
 				$token = $api_details['api_auth_token'];
 				$client = new Client($sid, $token);
 				$phone = '+30' . $phone;
-				$message = "Η παραγγελία σας με αριθμό " . $order_id . " έχει καταχωρθεί επιτυχώς! Μπορείτε να κατεβάσετε τα βιβλία σας εδώ: https://www.alearning.gr/my-account/downloads/";
+				$message = $api_details['order_completed_message'];
+
+				//Populate shortcodes
+				$message = str_replace("[order_id]", $order->get_id(), $message);
+				$message = str_replace("[customer_firstname]", $order->get_billing_first_name($context = 'view'), $message);
+				$message = str_replace("[customer_lastname]", $order->get_billing_last_name($context = 'view'), $message);
+				$message = str_replace("[order_date]", $order->get_date_created(), $message);
+				$message = str_replace("[download_link]", $api_details['download_link'], $message);
+
 				try {
-					$client->messages->create(
-						// the number you'd like to send the message to
+					$client->messages->create(						
 						$phone,
-						[
-							// A Twilio phone number you purchased at twilio.com/console
-							'from' => '+15005550006',
-							// the body of the text message you'd like to send
+						[							
+							'from' => $api_details['sender_phone'],							
 							'body' => $message
 						]
 					);

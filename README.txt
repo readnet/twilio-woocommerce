@@ -1,6 +1,5 @@
 === rTwilio API ===
 Contributors: giannisftaras
-Donate link: https://giannisftaras.dev/
 Tags: twilio, sms
 Requires at least: 5.0.0
 Tested up to: 5.4.1
@@ -53,5 +52,14 @@ Of course, but you must do it via editing all the files that contain text. No au
 
 == Changelog ==
 
-= 1.0 (07/05/2020) =
+= 1.1.0 (07/05/2020) =
+* Add phone field to the settings page.
+* Add download page link to settings.
+* Added shortcode functionality.
+* Hide token field text for security reasons.
+* Edit messages text via the settings page.
+* Better settings page.
+* Update plugin description.
+
+= 1.0 (06/05/2020) =
 * Initial relase.
